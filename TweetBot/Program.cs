@@ -24,9 +24,6 @@ namespace TweetBot
             // Authenticate the service
             service.AuthenticateWith(AccessToken, AccessTokenSecret);
             
-            // Send a tweet based on the RNG value
-            SendTweet(service, rng.Next().ToString());
-
             bool exit = false;
             
             TimeSpan time = TimeSpan.FromSeconds(0);
