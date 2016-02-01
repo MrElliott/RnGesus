@@ -28,7 +28,12 @@ namespace TweetBot
 
             string exit = Console.ReadLine();
 
-            while (exit.ToLower() == "e")
+            TwitterStatus result = service.SendTweet(new SendTweetOptions
+            {
+                Status = "Hello world!"
+            });
+       
+            while (exit.ToLower() != "e")
             {
                 exit = Console.ReadLine();
             }
