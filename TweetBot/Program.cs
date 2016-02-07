@@ -6,30 +6,29 @@ namespace TweetBot
 {
     class Program
     {
-        private const string ConsumerKey = "eo8O4yXKhSi2gqoTsSxCEgIRg";
-        private const string ConsumerSecret = "lGAQ0FWjoXB1VeHp4gBBFkQ1UV2ctbAbDCwLmMQaLidGhwXlyW";
+        private const string CONSUMER_KEY = "eo8O4yXKhSi2gqoTsSxCEgIRg";
+        private const string CONSUMER_SECRET = "lGAQ0FWjoXB1VeHp4gBBFkQ1UV2ctbAbDCwLmMQaLidGhwXlyW";
 
-        private const string AccessToken = "4869317847-UW6uY8pJlp6XHoqiQno12a2CywKtgDiOpH753u1";
-        private const string AccessTokenSecret = "rQDLje7UcAJmKAVyuu9sWG32A2R2NQ6JWTypDqf5xfobo";
+        private const string ACCESS_TOKEN = "4869317847-UW6uY8pJlp6XHoqiQno12a2CywKtgDiOpH753u1";
+        private const string ACCESS_TOKEN_SECRET = "rQDLje7UcAJmKAVyuu9sWG32A2R2NQ6JWTypDqf5xfobo";
 
         // Timespan based on minutes
-        const double ResetTime = 5;
+        const double RESET_TIME = 5;
 
+        // ReSharper disable once UnusedParameter.Local
         static void Main(string[] args)
         {
             // Create the random number generater
             Random rng = new Random();
             // Pull down the twitter service 
-            TwitterService service = new TwitterService(ConsumerKey, ConsumerSecret);
+            TwitterService service = new TwitterService(CONSUMER_KEY, CONSUMER_SECRET);
             // Authenticate the service
-            service.AuthenticateWith(AccessToken, AccessTokenSecret);
-            
-            bool exit = false;
-            
+            service.AuthenticateWith(ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+
             TimeSpan time = TimeSpan.FromSeconds(0);
             DateTime lastUpdate = DateTime.Now;
 
-            while (!exit)
+            while (true)
             {
                 TimeSpan sincelast = TimeSpan.FromTicks(DateTime.Now.Ticks - lastUpdate.Ticks);
 
@@ -39,12 +38,13 @@ namespace TweetBot
 
                 if (time <= TimeSpan.Zero)
                 {
-                    time = TimeSpan.FromMinutes(ResetTime);
+                    time = TimeSpan.FromMinutes(RESET_TIME);
 
                     SendTweet(service, rng.Next().ToString());
                 }
             }
             
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private static void SendTweet(TwitterService service, string message)
@@ -64,7 +64,7 @@ namespace TweetBot
             //var serviceResponse = service.Response.Response;
         }
 
-        private static void ListPreviousTweets(TwitterService service)
+        public static void ListPreviousTweets(TwitterService service)
         {
             var tweets = service.ListTweetsOnHomeTimeline(new ListTweetsOnHomeTimelineOptions());
 
