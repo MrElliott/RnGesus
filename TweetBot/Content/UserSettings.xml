@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <Setttings>
-  
+  <!-- The Consumer Key for your twitter account -->
+  <ConsumerKey>eo8O4yXKhSi2gqoTsSxCEgIRg</ConsumerKey>
+  <!-- The Consumer Secret for the your twitter account -->
+  <ConsumerSecret>lGAQ0FWjoXB1VeHp4gBBFkQ1UV2ctbAbDCwLmMQaLidGhwXlyW</ConsumerSecret>
+
+  <!-- Access token for your specific App -->
+  <AccessToken>4869317847-UW6uY8pJlp6XHoqiQno12a2CywKtgDiOpH753u1</AccessToken>
+  <!-- Secret Access Token for your App -->
+  <AccessTokenSecret>rQDLje7UcAJmKAVyuu9sWG32A2R2NQ6JWTypDqf5xfobo</AccessTokenSecret>
 </Setttings>
